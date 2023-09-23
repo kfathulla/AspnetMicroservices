@@ -1,3 +1,4 @@
+using Discount.API.Extensions;
 using Discount.API.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +11,7 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+
 if (true || app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -21,5 +23,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.Services.MigrateDatabase<Program>();
 
 app.Run();
