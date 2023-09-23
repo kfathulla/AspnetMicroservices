@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>98b79c1d-e76d-4d83-87e6-b037c987d79c</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
@@ -10,14 +10,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
+    <None Remove="Protos\discount.proto" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="Grpc.AspNetCore" Version="2.57.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
 	<PackageReference Include="Dapper" Version="2.0.151" />
 	<PackageReference Include="Npgsql" Version="7.0.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="Protos\discount.proto" GrpcServices="Server" />
   </ItemGroup>
 
 </Project>
