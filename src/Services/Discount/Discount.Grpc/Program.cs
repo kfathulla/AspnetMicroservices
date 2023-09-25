@@ -1,6 +1,4 @@
-using AutoMapper;
 using Discount.Grpc.Extensions;
-using Discount.Grpc.Mapper;
 using Discount.Grpc.Repositories;
 using Discount.Grpc.Services;
 
@@ -9,8 +7,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddTransient<IDiscountRepository, DiscountRepository>();
 builder.Services.AddGrpc();
+builder.Services.AddGrpcSwagger();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.MapGrpcService<DiscountService>();
 
